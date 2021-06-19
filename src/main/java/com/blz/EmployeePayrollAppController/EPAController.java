@@ -50,10 +50,11 @@ public class EPAController {
 		return new ResponseEntity<ResponseDTO>(resDTO, HttpStatus.OK);
 	}
 
-	@PutMapping("/update")
-	public ResponseEntity<ResponseDTO> updateEmployeePayrollData(@RequestBody EPADTO employeePayrollDTO) {
+	@PutMapping("/update/{empId}")
+	public ResponseEntity<ResponseDTO> updateEmployeePayrollData(@PathVariable("empId") int empId,
+			@RequestBody EPADTO employeePayrollDTO) {
 		EPAData empData = null;
-		empData = employeePayrollService.updateEPAData(employeePayrollDTO);
+		empData = employeePayrollService.updateEPAData(empId, employeePayrollDTO);
 		ResponseDTO resDTO = new ResponseDTO("Updated Employee Payroll Data Successfully: ", empData);
 		return new ResponseEntity<ResponseDTO>(resDTO, HttpStatus.OK);
 	}

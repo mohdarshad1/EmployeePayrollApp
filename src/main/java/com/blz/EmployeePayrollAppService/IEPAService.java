@@ -13,7 +13,7 @@ public interface IEPAService {
 
 	EPAData createEPAData(EPADTO EPADTO);
 
-	EPAData updateEPAData(EPADTO EPADTO);
+	EPAData updateEPAData(int empId, EPADTO employeePayrollDTO);
 
 	void deleteEPAData(int empId);
 }

@@ -11,36 +11,41 @@ import com.blz.EmployeePayrollAppModel.EPAData;
 @Service
 public class EPAService implements IEPAService {
 
+	private List<EPAData> employeePayrollList = new ArrayList<>();
+
 	@Override
 	public List<EPAData> getEPAData() {
-		List<EPAData> payrollDatas = new ArrayList<>();
-		payrollDatas.add(new EPAData(1, new EPADTO("Arshad", 800000)));
-		return payrollDatas;
+		List<EPAData> empData = new ArrayList<>();
+		return employeePayrollList;
 	}
 
 	@Override
 	public EPAData getEPADataById(int empId) {
-		EPAData payrollDatas = null;
-		payrollDatas = new EPAData(2, new EPADTO("Ankit", 400000));
-		return payrollDatas;
+		EPAData empData = null;
+		return employeePayrollList.get(empId - 1);
 	}
 
 	@Override
 	public EPAData createEPAData(EPADTO EPADTO) {
-		EPAData payrollData = null;
-		payrollData = new EPAData(3, EPADTO);
-		return payrollData;
+		EPAData empData = null;
+		empData = new EPAData(employeePayrollList.size() + 1, EPADTO);
+		employeePayrollList.add(empData);
+		return empData;
 	}
 
 	@Override
-	public EPAData updateEPAData(EPADTO EPADTO) {
-		EPAData payrollData = null;
-		payrollData = new EPAData(3, EPADTO);
-		return payrollData;
+	public EPAData updateEPAData(int empId, EPADTO employeePayrollDTO) {
+		EPAData empData = this.getEPADataById(empId);
+		empData.setName(employeePayrollDTO.name);
+		empData.setSalary(employeePayrollDTO.salary);
+		employeePayrollList.set(empId - 1, empData);
+		return empData;
 	}
 
 	@Override
 	public void deleteEPAData(int empId) {
 		// TODO Auto-generated method stub
+		employeePayrollList.remove(empId - 1);
 	}
+
 }
