@@ -2,6 +2,8 @@ package com.blz.EmployeePayrollApp.Controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +45,7 @@ public class EPAController {
 	}
 
 	@PostMapping("/create")
-	public ResponseEntity<ResponseDTO> createEmployeePayrollData(@RequestBody EPADTO employeePayrollDTO) {
+	public ResponseEntity<ResponseDTO> createEmployeePayrollData(@Valid @RequestBody EPADTO employeePayrollDTO) {
 		EPAData empData = null;
 		empData = employeePayrollService.createEPAData(employeePayrollDTO);
 		ResponseDTO resDTO = new ResponseDTO("Created Employee Payroll Data Successfully:", empData);
@@ -51,7 +53,7 @@ public class EPAController {
 	}
 
 	@PutMapping("/update/{empId}")
-	public ResponseEntity<ResponseDTO> updateEmployeePayrollData(@PathVariable("empId") int empId,
+	public ResponseEntity<ResponseDTO> updateEmployeePayrollData(@PathVariable("empId") int empId,@Valid
 			@RequestBody EPADTO employeePayrollDTO) {
 		EPAData empData = null;
 		empData = employeePayrollService.updateEPAData(empId, employeePayrollDTO);

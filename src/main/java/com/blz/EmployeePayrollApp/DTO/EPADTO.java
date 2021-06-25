@@ -1,8 +1,16 @@
 package com.blz.EmployeePayrollApp.DTO;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+
 public class EPADTO {
 
+	@Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$", message="Invalid Employee Name")
+	@NotEmpty(message="Employee name cannot be null ")
 	public String name;
+	
+	@Min(value = 500, message="Min wage should be more than 500 ")
 	public long salary;
 
 	public EPADTO(String name, long salary) {
