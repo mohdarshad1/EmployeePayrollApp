@@ -16,7 +16,9 @@ import javax.persistence.JoinColumn;
 import com.blz.EmployeePayrollApp.DTO.EPADTO;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @Data
 @Entity
 @Table(name = "employee_payroll")
