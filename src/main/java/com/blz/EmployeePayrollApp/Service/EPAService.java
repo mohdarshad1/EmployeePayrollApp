@@ -3,14 +3,22 @@ package com.blz.EmployeePayrollApp.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.blz.EmployeePayrollApp.DTO.EPADTO;
 import com.blz.EmployeePayrollApp.Exception.EmployeePayrollException;
 import com.blz.EmployeePayrollApp.Model.EPAData;
+import com.blz.EmployeePayrollApp.Repository.EPARepository;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class EPAService implements IEPAService {
+
+	@Autowired
+	private EPARepository employeeRepository;
 
 	private List<EPAData> employeePayrollList = new ArrayList<>();
 
@@ -27,11 +35,12 @@ public class EPAService implements IEPAService {
 	}
 
 	@Override
-	public EPAData createEPAData(EPADTO EPADTO) {
+	public EPAData createEPAData(EPADTO ePADTO) {
 		EPAData empData = null;
-		empData = new EPAData(employeePayrollList.size() + 1, EPADTO);
+		empData = new EPAData(ePADTO);
 		employeePayrollList.add(empData);
-		return empData;
+		log.debug("Employee Data: " + empData.toString());
+		return employeeRepository.save(empData);
 	}
 
 	@Override
