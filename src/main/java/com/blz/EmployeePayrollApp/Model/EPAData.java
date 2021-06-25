@@ -14,6 +14,16 @@ public class EPAData {
 	public EPAData() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public void setName(String name) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setSalary(long salary) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	public EPAData(int employeeId, String name, long salary) {
 		super();
@@ -28,4 +38,6 @@ public class EPAData {
 		this.name = employeePayrollDTO.name;
 		this.salary = employeePayrollDTO.salary;
 	}
+
+	
 }
