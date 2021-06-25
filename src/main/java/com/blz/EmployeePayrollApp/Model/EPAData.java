@@ -1,5 +1,8 @@
 package com.blz.EmployeePayrollApp.Model;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import com.blz.EmployeePayrollApp.DTO.EPADTO;
 
 import lombok.Data;
@@ -11,33 +14,25 @@ public class EPAData {
 	private String name;
 	private long salary;
 
-	public EPAData() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	public void setName(String name) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setSalary(long salary) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public EPAData(int employeeId, String name, long salary) {
-		super();
-		this.employeeId = employeeId;
-		this.name = name;
-		this.salary = salary;
-	}
+	private String gender;
+	private LocalDate startDate;
+	private String note;
+	private String profilePic;
+	private List<String> departments;
 
 	public EPAData(int employeeId, EPADTO employeePayrollDTO) {
 		super();
 		this.employeeId = employeeId;
-		this.name = employeePayrollDTO.name;
-		this.salary = employeePayrollDTO.salary;
+		this.updateEmployeePayrollData(employeePayrollDTO);
 	}
 
-	
+	public void updateEmployeePayrollData(EPADTO employeePayrollDTO) {
+		this.name = employeePayrollDTO.name;
+		this.salary = employeePayrollDTO.salary;
+		this.gender = employeePayrollDTO.gender;
+		this.startDate = employeePayrollDTO.startDate;
+		this.note = employeePayrollDTO.note;
+		this.profilePic = employeePayrollDTO.profilePic;
+		this.departments = employeePayrollDTO.departments;
+	}
 }

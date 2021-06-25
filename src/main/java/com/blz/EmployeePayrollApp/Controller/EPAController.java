@@ -21,8 +21,11 @@ import com.blz.EmployeePayrollApp.DTO.ResponseDTO;
 import com.blz.EmployeePayrollApp.Model.EPAData;
 import com.blz.EmployeePayrollApp.Service.IEPAService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping("/employeepayrollservice")
+@Slf4j
 public class EPAController {
 
 	@Autowired
@@ -46,6 +49,7 @@ public class EPAController {
 
 	@PostMapping("/create")
 	public ResponseEntity<ResponseDTO> createEmployeePayrollData(@Valid @RequestBody EPADTO employeePayrollDTO) {
+		log.debug("Employee DTO: " + employeePayrollDTO.toString());
 		EPAData empData = null;
 		empData = employeePayrollService.createEPAData(employeePayrollDTO);
 		ResponseDTO resDTO = new ResponseDTO("Created Employee Payroll Data Successfully:", empData);
@@ -53,8 +57,8 @@ public class EPAController {
 	}
 
 	@PutMapping("/update/{empId}")
-	public ResponseEntity<ResponseDTO> updateEmployeePayrollData(@PathVariable("empId") int empId,@Valid
-			@RequestBody EPADTO employeePayrollDTO) {
+	public ResponseEntity<ResponseDTO> updateEmployeePayrollData(@PathVariable("empId") int empId,
+			@Valid @RequestBody EPADTO employeePayrollDTO) {
 		EPAData empData = null;
 		empData = employeePayrollService.updateEPAData(empId, employeePayrollDTO);
 		ResponseDTO resDTO = new ResponseDTO("Updated Employee Payroll Data Successfully: ", empData);
