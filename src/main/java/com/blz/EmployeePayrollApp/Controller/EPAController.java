@@ -47,6 +47,13 @@ public class EPAController {
 		return new ResponseEntity<ResponseDTO>(resDTO, HttpStatus.OK);
 	}
 
+	@GetMapping("/department/{department}")
+	public ResponseEntity<ResponseDTO> getEmployeesByDepartment(@PathVariable("department") String department) {
+		List<EPAData> employeesByDepartment = employeePayrollService.getEmployeesByDepartment(department);
+		ResponseDTO responseDTO = new ResponseDTO("Get call for the department successful: ", employeesByDepartment);
+		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+	}
+
 	@PostMapping("/create")
 	public ResponseEntity<ResponseDTO> createEmployeePayrollData(@Valid @RequestBody EPADTO employeePayrollDTO) {
 		log.debug("Employee DTO: " + employeePayrollDTO.toString());

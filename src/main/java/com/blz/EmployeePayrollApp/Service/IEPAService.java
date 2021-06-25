@@ -11,6 +11,8 @@ public interface IEPAService {
 
 	EPAData getEPADataById(int empId);
 
+	List<EPAData> getEmployeesByDepartment(String department);
+
 	EPAData createEPAData(EPADTO EPADTO);
 
 	EPAData updateEPAData(int empId, EPADTO employeePayrollDTO);
