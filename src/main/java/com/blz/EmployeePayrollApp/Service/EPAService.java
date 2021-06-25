@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.blz.EmployeePayrollApp.DTO.EPADTO;
+import com.blz.EmployeePayrollApp.Exception.EmployeePayrollException;
 import com.blz.EmployeePayrollApp.Model.EPAData;
 
 @Service
@@ -21,8 +22,8 @@ public class EPAService implements IEPAService {
 
 	@Override
 	public EPAData getEPADataById(int empId) {
-		EPAData empData = null;
-		return employeePayrollList.get(empId - 1);
+		return employeePayrollList.stream().filter(list -> list.getEmployeeId() == empId).findFirst()
+				.orElseThrow(() -> new EmployeePayrollException("Employee not present"));
 	}
 
 	@Override
