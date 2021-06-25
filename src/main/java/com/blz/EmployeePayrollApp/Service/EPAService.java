@@ -1,12 +1,12 @@
-package com.blz.EmployeePayrollAppService;
+package com.blz.EmployeePayrollApp.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.blz.EmployeePayrollAppDTO.EPADTO;
-import com.blz.EmployeePayrollAppModel.EPAData;
+import com.blz.EmployeePayrollApp.DTO.EPADTO;
+import com.blz.EmployeePayrollApp.Model.EPAData;
 
 @Service
 public class EPAService implements IEPAService {
@@ -47,5 +47,4 @@ public class EPAService implements IEPAService {
 		// TODO Auto-generated method stub
 		employeePayrollList.remove(empId - 1);
 	}
-
 }

@@ -1,4 +1,4 @@
-package com.blz.EmployeePayrollAppDTO;
+package com.blz.EmployeePayrollApp.DTO;
 
 public class EPADTO {
 

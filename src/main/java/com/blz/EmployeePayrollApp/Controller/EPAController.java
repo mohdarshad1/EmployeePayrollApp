@@ -1,4 +1,4 @@
-package com.blz.EmployeePayrollAppController;
+package com.blz.EmployeePayrollApp.Controller;
 
 import java.util.List;
 
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.blz.EmployeePayrollAppDTO.EPADTO;
-import com.blz.EmployeePayrollAppDTO.ResponseDTO;
-import com.blz.EmployeePayrollAppModel.EPAData;
-import com.blz.EmployeePayrollAppService.IEPAService;
+import com.blz.EmployeePayrollApp.DTO.EPADTO;
+import com.blz.EmployeePayrollApp.DTO.ResponseDTO;
+import com.blz.EmployeePayrollApp.Model.EPAData;
+import com.blz.EmployeePayrollApp.Service.IEPAService;
 
 @RestController
 @RequestMapping("/employeepayrollservice")
