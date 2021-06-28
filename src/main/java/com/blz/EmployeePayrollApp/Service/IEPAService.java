@@ -12,6 +12,8 @@ public interface IEPAService {
 	EPAData getEPADataById(int empId);
 
 	List<EPAData> getEmployeesByDepartment(String department);
+	
+	List<EPAData> getEmployeesByKeywordName(String keyword);
 
 	EPAData createEPAData(EPADTO EPADTO);
 

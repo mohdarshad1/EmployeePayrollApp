@@ -31,7 +31,7 @@ public class EPAController {
 	@Autowired
 	private IEPAService employeePayrollService;
 
-	@RequestMapping(value = { "", "/", "get" })
+	@GetMapping(value = { "", "/", "get" })
 	public ResponseEntity<ResponseDTO> getEmployeePayrollData() {
 		List<EPAData> empData = null;
 		empData = employeePayrollService.getEPAData();
@@ -51,6 +51,13 @@ public class EPAController {
 	public ResponseEntity<ResponseDTO> getEmployeesByDepartment(@PathVariable("department") String department) {
 		List<EPAData> employeesByDepartment = employeePayrollService.getEmployeesByDepartment(department);
 		ResponseDTO responseDTO = new ResponseDTO("Get call for the department successful: ", employeesByDepartment);
+		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+	}
+	
+	@GetMapping("/name/{keyword}")
+	public ResponseEntity<ResponseDTO> getEmployeesByKeywordName(@PathVariable("keyword") String keyword) {
+		List<EPAData> empData = employeePayrollService.getEmployeesByKeywordName(keyword);
+		ResponseDTO responseDTO = new ResponseDTO("Get call for the name successful: ", empData);
 		return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
 	}
 

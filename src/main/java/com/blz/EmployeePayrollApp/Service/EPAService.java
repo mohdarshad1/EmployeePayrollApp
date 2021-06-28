@@ -34,6 +34,11 @@ public class EPAService implements IEPAService {
 	public List<EPAData> getEmployeesByDepartment(String department) {
 		return employeeRepository.findEmployeesById(department);
 	}
+	
+	@Override
+	public List<EPAData> getEmployeesByKeywordName(String keyword) {
+		return employeeRepository.getEmployeesByKeywordName(keyword);
+	}
 
 	@Override
 	public EPAData createEPAData(EPADTO ePADTO) {
